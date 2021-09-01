@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage, Collider2D collider)
     {
+        cam.GetComponent<CameraController>().ScreenShake(1f);
         if (state != State.Rolling) hitpoints -= damage;
         if (hitpoints <= 0)
         {
