@@ -11,7 +11,7 @@ public class Shooting : MonoBehaviour
     public Transform secondaryFirePoint2;
     public GameObject bulletPrefab;
 
-    private float bulletForce = 20f;
+    private float bulletForce = 10f;
     public int bulletDamage = 10;
     public float reload = 0.1f;
     public float timeBtwBullets = 0.1f;
@@ -25,8 +25,8 @@ public class Shooting : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(6, 6); // friendly bullets with themselves  
         Physics2D.IgnoreLayerCollision(3, 6); // player with friendly bullets
-        Physics2D.IgnoreLayerCollision(7, 8); // enemy bullets with themselves  
-        Physics2D.IgnoreLayerCollision(8, 8); // player with enemy bullets
+        Physics2D.IgnoreLayerCollision(7, 8); // enemies with enemy bullets
+        Physics2D.IgnoreLayerCollision(8, 8); // enemy bullets with themselves
     }
     // Update is called once per frame
     void Update()
@@ -38,7 +38,7 @@ public class Shooting : MonoBehaviour
             {
                 //Shoot();
                 StartCoroutine(Shoot());
-                Debug.Log(Time.time);
+               // Debug.Log(Time.time);
                 time = Time.time + reload;
             }
         }
@@ -47,7 +47,7 @@ public class Shooting : MonoBehaviour
         {
             isShotgun = false;
             time += 0.5f;
-            bulletForce = 20f;
+            bulletForce = 10f;
             bulletDamage = 10;
             reload = 0.1f;
             timeBtwBullets = 0;

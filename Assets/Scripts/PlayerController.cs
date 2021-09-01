@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
+        Debug.Log(hitpoints);
     }
 
     private void FixedUpdate()
@@ -99,7 +99,10 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(poofPrefab, transform.position, Quaternion.identity);
 
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            ArrayList enemies = new ArrayList();
+            enemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+            enemies.AddRange(GameObject.FindGameObjectsWithTag("ShotgunEnemy"));
+
             foreach (GameObject enemy in enemies)
             {
                 enemy.GetComponent<EnemyController>().TakeDmg(1000000);

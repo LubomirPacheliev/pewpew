@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     public float stunTime;
     public float speed;
     public int hitPoints;
-    public int damage;
+    public int bodyDamage;
     public float stun;
     public float stopDistance;
     private NavMeshAgent agent;
@@ -71,9 +71,9 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.gameObject.layer == 3)
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage, collision.otherCollider);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(bodyDamage, collision.otherCollider);
             stunTime *= 2;
-            TakeDmg(damage / 2);
+            TakeDmg(bodyDamage / 2);
             stunTime /= 2;
         }
         if(collision.gameObject.layer == 7)
